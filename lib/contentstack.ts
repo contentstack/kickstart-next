@@ -1,9 +1,12 @@
 // Importing Contentstack SDK and specific types for region and query operations
-import contentstack, { Region, QueryOperation } from "@contentstack/delivery-sdk";
+import contentstack, { QueryOperation } from "@contentstack/delivery-sdk";
+
 // Importing Contentstack Live Preview utilities and stack SDK 
 import ContentstackLivePreview, { IStackSdk } from "@contentstack/live-preview-utils";
+
 // Importing the Page type definition 
 import { Page } from "./types";
+
 // helper functions from private package to retrieve Contentstack endpoints in a convienient way
 import { getContentstackEndpoints, getRegionForString } from "@timbenniks/contentstack-endpoints";
 
@@ -16,17 +19,22 @@ const endpoints = getContentstackEndpoints(region, true)
 export const stack = contentstack.stack({
   // Setting the API key from environment variables
   apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY as string,
+
   // Setting the delivery token from environment variables
   deliveryToken: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN as string,
+
   // Setting the environment based on environment variables
   environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string,
+
   // Setting the region based on environment variables
   region: region,
   live_preview: {
     // Enabling live preview if specified in environment variables
     enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
+
     // Setting the preview token from environment variables
     preview_token: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_TOKEN,
+
     // Setting the host for live preview based on the region
     host: endpoints.preview,
   }
