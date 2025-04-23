@@ -39,14 +39,14 @@ export default function Home() {
         {/* Section with padding */}
         {page?.title ? (
           <h1
-            className="text-4xl font-bold mb-4"
+            className="text-4xl font-bold mb-4 text-center"
             {...(page?.$ && page?.$.title)} // Adding editable tags if available
           >
-            {page?.title} {/* Rendering the page title */}
+            {page?.title} with Next{/* Rendering the page title */}
           </h1>
         ) : null}
         {page?.description ? (
-          <p className="mb-4" {...(page?.$ && page?.$.description)}>
+          <p className="mb-4 text-center" {...(page?.$ && page?.$.description)}>
             {/* Adding editable tags if available */}
             {page?.description} {/* Rendering the page description */}
           </p>
@@ -90,6 +90,7 @@ export default function Home() {
                 <div className="w-full md:w-1/2">
                   {block.image ? (
                     <Image
+                      key={`image-${block._metadata.uid}`}
                       src={block.image.url}
                       alt={block.image.title}
                       width={200}
