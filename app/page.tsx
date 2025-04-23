@@ -90,6 +90,7 @@ export default function Home() {
                 <div className="w-full md:w-1/2">
                   {block.image ? (
                     <Image
+                      key={`image-${block._metadata.uid}`}
                       src={block.image.url}
                       alt={block.image.title}
                       width={200}
