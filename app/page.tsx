@@ -1,5 +1,6 @@
 "use client"; // This directive indicates that the code is meant to run on the client side and the server side
 
+import DOMPurify from "dompurify";
 import Image from "next/image"; // Importing the Image component from Next.js for optimized image rendering
 import { getPage, initLivePreview } from "@/lib/contentstack"; // Importing functions to get page data and initialize live preview from a local library
 import { useEffect, useState } from "react"; // Importing React hooks for side effects and state management
@@ -64,7 +65,9 @@ export default function Home() {
         {page?.rich_text ? (
           <div
             {...(page?.$ && page?.$.rich_text)} // Adding editable tags if available
-            dangerouslySetInnerHTML={{ __html: page?.rich_text }} // Rendering rich text content as HTML
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(page?.rich_text),
+            }} // Rendering rich text content as HTML
           />
         ) : null}
         <div
@@ -112,7 +115,9 @@ export default function Home() {
                   {block.copy ? (
                     <div
                       {...(block?.$ && block?.$.copy)} // Adding editable tags if available
-                      dangerouslySetInnerHTML={{ __html: block.copy }} // Rendering block copy as HTML
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(block.copy),
+                      }} // Rendering block copy as HTML
                       className="prose"
                     />
                   ) : null}
