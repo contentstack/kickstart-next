@@ -3,7 +3,11 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "eu-images.contentstack.com",
+        hostname: "images.contentstack.io",
+      },
+      {
+        protocol: "https",
+        hostname: "*-images.contentstack.com",
       },
     ],
   },
