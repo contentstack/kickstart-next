@@ -1,6 +1,6 @@
 {
   "name": "kickstart-next",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "repository": {
     "type": "git",
@@ -21,17 +21,17 @@
     "@contentstack/delivery-sdk": "^4.7.0",
     "@contentstack/live-preview-utils": "^3.2.2",
     "@timbenniks/contentstack-endpoints": "^1.0.9",
-    "dompurify": "^3.2.5",
+    "dompurify": "^3.2.6",
     "next": "^15.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.7",
-    "@types/node": "^22.15.18",
+    "@types/node": "^22.15.19",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
-    "eslint": "^9.26.0",
+    "eslint": "^9.27.0",
     "eslint-config-next": "^15.3.2",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.7",
