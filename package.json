@@ -1,6 +1,6 @@
 {
   "name": "kickstart-next",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "repository": {
     "type": "git",
@@ -18,23 +18,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@contentstack/delivery-sdk": "^4.7.0",
-    "@contentstack/live-preview-utils": "^3.2.2",
+    "@contentstack/delivery-sdk": "^4.7.1",
+    "@contentstack/live-preview-utils": "^3.2.4",
     "@timbenniks/contentstack-endpoints": "^1.0.10",
     "dompurify": "^3.2.6",
-    "next": "^15.3.2",
+    "next": "^15.3.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.7",
-    "@types/node": "^22.15.21",
-    "@types/react": "^19.1.5",
-    "@types/react-dom": "^19.1.5",
-    "eslint": "^9.27.0",
-    "eslint-config-next": "^15.3.2",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.7",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@types/node": "^24.0.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^9.29.0",
+    "eslint-config-next": "^15.3.3",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
   }
 }
