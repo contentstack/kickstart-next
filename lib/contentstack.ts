@@ -11,8 +11,7 @@ import { Page } from "./types";
 import { getContentstackEndpoints, getRegionForString } from "@timbenniks/contentstack-endpoints";
 
 // Set the region by string value from environment variables
-const region = getRegionForString(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION || "EU");
-
+const region = getRegionForString(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION as string)
 // object with all endpoints for region.
 const endpoints = getContentstackEndpoints(region, true)
 
@@ -26,8 +25,15 @@ export const stack = contentstack.stack({
   // Setting the environment based on environment variables
   environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string,
 
-  // Setting the region based on environment variables
-  region: region,
+  // Setting the region
+  // if the region doesnt exist, fall back to a custom region given by the env vars
+  // for internal testing purposes at Contentstack we look for a custom region in the env vars, you do not have to do this.
+  region: region ? region : process.env.NEXT_PUBLIC_CONTENTSTACK_REGION as any,
+
+  // Setting the host for content delivery based on the region or environment variables
+  // This is done for internal testing purposes at Contentstack, you can omit this if you have set a region above.
+  host: process.env.NEXT_PUBLIC_CONTENTSTACK_CONTENT_DELIVERY || endpoints && endpoints.contentDelivery,
+
   live_preview: {
     // Enabling live preview if specified in environment variables
     enable: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true',
@@ -36,7 +42,8 @@ export const stack = contentstack.stack({
     preview_token: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_TOKEN,
 
     // Setting the host for live preview based on the region
-    host: endpoints.preview,
+    // for internal testing purposes at Contentstack we look for a custom host in the env vars, you do not have to do this.
+    host: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_HOST || endpoints && endpoints.preview
   }
 });
 
@@ -52,7 +59,9 @@ export function initLivePreview() {
       environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string, // Setting the environment from environment variables
     },
     clientUrlParams: {
-      host: endpoints.application
+      // Setting the client URL parameters for live preview
+      // for internal testing purposes at Contentstack we look for a custom host in the env vars, you do not have to do this.
+      host: process.env.NEXT_PUBLIC_CONTENTSTACK_CONTENT_APPLICATION || endpoints && endpoints.application
     },
     editButton: {
       enable: true, // Enabling the edit button for live preview
