@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       {/* Setting the language attribute for the HTML document */}
       <body>
-        {children}
+        <main className="max-w-(--breakpoint-md) mx-auto">{children}</main>
       </body>
       {/* Rendering the children components inside the body */}
     </html>
