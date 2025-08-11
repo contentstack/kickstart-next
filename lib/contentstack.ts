@@ -88,3 +88,5 @@ export async function getPage(url: string) {
     return entry; // Returning the fetched entry
   }
 }
+
+export const isPreview = process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === "true";

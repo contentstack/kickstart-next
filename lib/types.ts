@@ -1,6 +1,3 @@
-// Description: Type definitions for the Contentstack API
-
-// PublishDetails object - Represents the details of publish functionality 
 export interface PublishDetails {
   environment: string;
   locale: string;
@@ -8,7 +5,6 @@ export interface PublishDetails {
   user: string;
 }
 
-// File object - Represents a file in Contentstack
 export interface File {
   uid: string;
   created_at: string;
@@ -26,17 +22,26 @@ export interface File {
   _version: number;
   title: string;
   _metadata?: object;
+  description?: string;
+  dimension?: {
+    height: number;
+    width: number;
+  };
   publish_details: PublishDetails;
-  $: any;
+  /** CSLP mapping for editable fields */
+  $?: {
+    url?: CSLPFieldMapping;
+    title?: CSLPFieldMapping;
+    filename?: CSLPFieldMapping;
+    description?: CSLPFieldMapping;
+  };
 }
 
-// Link object - Represents a hyperlink in Contentstack
 export interface Link {
   title: string;
   href: string;
 }
 
-// Taxonomy object - Represents a taxonomy in Contentstack
 export interface Taxonomy {
   taxonomy_uid: string;
   max_terms?: number;
@@ -44,30 +49,80 @@ export interface Taxonomy {
   non_localizable: boolean;
 }
 
-// Block object - Represents a modular block in Contentstack
-export interface Block {
+export interface CSLPAttribute {
+  "data-cslp"?: string;
+  "data-cslp-parent-field"?: string;
+}
+export type CSLPFieldMapping = CSLPAttribute;
+
+export interface SystemFields {
+  uid?: string;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: string;
+  updated_by?: string;
+  _content_type_uid?: string;
+  tags?: string[];
+  ACL?: any[];
   _version?: number;
-  _metadata: any;
-  $: any;
+  _in_progress?: boolean;
+  locale?: string;
+  publish_details?: PublishDetails;
   title?: string;
-  copy?: string;
-  image?: File | null;
-  layout?: ("image_left" | "image_right") | null;
 }
 
-export interface Blocks {
+/** A block! */
+export interface Block {
+  /** Version */
+  _version?: number;
+  /** Title */
+  title?: string;
+  /** Copy */
+  copy?: string;
+  /** Image */
+  image?: File | null;
+  /** Layout */
+  layout?: ("image_left" | "image_right") | null;
+  /** Metadata */
+  _metadata?: { uid: string };
+  /** CSLP mapping for editable fields */
+  $?: {
+    title?: CSLPFieldMapping;
+    copy?: CSLPFieldMapping;
+    image?: CSLPFieldMapping;
+    layout?: CSLPFieldMapping;
+  };
+}
+
+export interface Blocks extends SystemFields {
   block: Block;
 }
 
-// Page object - Represents a page in Contentstack
-export interface Page {
+export interface Page extends SystemFields {
+  /** UID - required for live preview */
   uid: string;
-  $: any;
+  /** Version */
   _version?: number;
+  /** Title */
   title: string;
+  /** URL */
   url?: string;
+  /** Description */
   description?: string;
+  /** Image */
   image?: File | null;
+  /** Rich Text */
   rich_text?: string;
+  /** blocks */
   blocks?: Blocks[];
+  /** CSLP mapping for editable fields */
+  $?: {
+    title?: CSLPFieldMapping;
+    url?: CSLPFieldMapping;
+    description?: CSLPFieldMapping;
+    image?: CSLPFieldMapping;
+    rich_text?: CSLPFieldMapping;
+    blocks?: CSLPFieldMapping;
+    [key: string]: CSLPFieldMapping | undefined; // Allow dynamic block indexing
+  };
 }
