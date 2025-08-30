@@ -22,7 +22,7 @@
     "@contentstack/live-preview-utils": "^3.4.0",
     "@timbenniks/contentstack-endpoints": "^1.0.14",
     "dompurify": "^3.2.6",
-    "next": "15.4.6",
+    "next": "15.4.7",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
