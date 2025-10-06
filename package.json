@@ -18,11 +18,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@contentstack/delivery-sdk": "^4.8.0",
-    "@contentstack/live-preview-utils": "^3.4.0",
-    "@timbenniks/contentstack-endpoints": "^1.0.14",
-    "dompurify": "^3.2.6",
-    "next": "15.4.6",
+    "@contentstack/delivery-sdk": "^4.10.0",
+    "@contentstack/live-preview-utils": "^4.0.2",
+    "@timbenniks/contentstack-endpoints": "^1.0.16",
+    "dompurify": "^3.2.7",
+    "next": "^15.5.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
