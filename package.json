@@ -18,13 +18,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@contentstack/delivery-sdk": "^4.8.0",
-    "@contentstack/live-preview-utils": "^3.4.0",
-    "@timbenniks/contentstack-endpoints": "^1.0.14",
-    "isomorphic-dompurify": "^2.26.0",
-    "next": "15.4.6",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "@contentstack/delivery-sdk": "^4.10.1",
+    "@contentstack/live-preview-utils": "^4.1.1",
+    "@timbenniks/contentstack-endpoints": "^2.0.0",
+    "isomorphic-dompurify": "^2.31.0",
+    "next": "^15.4.7",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
