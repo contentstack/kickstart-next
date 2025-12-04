@@ -10,8 +10,11 @@ import { Page } from "./types";
 // helper functions from private package to retrieve Contentstack endpoints in a convienient way
 import { getContentstackEndpoints, getRegionForString } from "@timbenniks/contentstack-endpoints";
 
+export const isPreview = process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === "true";
+
 // Set the region by string value from environment variables
 const region = getRegionForString(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION as string)
+
 // object with all endpoints for region.
 const endpoints = getContentstackEndpoints(region, true)
 
@@ -81,7 +84,7 @@ export async function getPage(url: string) {
   if (result.entries) {
     const entry = result.entries[0]; // Getting the first entry from the result
 
-    if (process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === 'true') {
+    if (isPreview) {
       contentstack.Utils.addEditableTags(entry, 'page', true); // Adding editable tags for live preview if enabled
     }
 
