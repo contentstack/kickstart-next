@@ -18,7 +18,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@contentstack/delivery-sdk": "^4.11.0",
+    "@contentstack/delivery-sdk": "^4.11.1",
     "@contentstack/live-preview-utils": "^4.2.1",
     "@timbenniks/contentstack-endpoints": "^2.1.0",
     "isomorphic-dompurify": "^2.35.0",
