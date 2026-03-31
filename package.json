@@ -1,6 +1,6 @@
 {
   "name": "kickstart-next",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "private": false,
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "@contentstack/delivery-sdk": "^5.1.2",
     "@contentstack/live-preview-utils": "^4.3.0",
     "@timbenniks/contentstack-endpoints": "^2.1.0",
-    "isomorphic-dompurify": "^3.6.0",
+    "isomorphic-dompurify": "^3.7.1",
     "next": "^16.2.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
