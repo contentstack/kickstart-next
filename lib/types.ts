@@ -126,3 +126,9 @@ export interface Page extends SystemFields {
     [key: string]: CSLPFieldMapping | undefined; // Allow dynamic block indexing
   };
 }
+
+export type ContentstackRegionEndpoints = {
+  application?: string;
+  contentDelivery?: string;
+  preview?: string;
+};
