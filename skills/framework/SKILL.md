@@ -20,7 +20,7 @@ description: Next.js, Tailwind v4, PostCSS, package scripts, and image optimizat
   - `build`: `next build`
   - `start`: `next start`
   - `lint`: `eslint .`
-- Major runtime deps: Next.js 16, React 19, `@contentstack/delivery-sdk`, `@contentstack/live-preview-utils`, `@timbenniks/contentstack-endpoints`, `isomorphic-dompurify`.
+- Major runtime deps: Next.js 16, React 19, `@contentstack/delivery-sdk`, `@contentstack/live-preview-utils`, `@contentstack/utils`, `isomorphic-dompurify`.
 - Styling/tooling: Tailwind CSS 4, `@tailwindcss/postcss`, TypeScript 5, ESLint 9, `eslint-config-next` 16.
 
 ### Next.js config

@@ -25,8 +25,8 @@ description: Contentstack Delivery SDK, live preview, getPage, env overrides, an
 
 ### Regions and endpoints
 
-- Region resolution uses `getRegionForString` from `@timbenniks/contentstack-endpoints`; `getContentstackEndpoints(region, true)` supplies default delivery, preview, and application hosts for that region.
-- If region resolution fails, the stack falls back to `NEXT_PUBLIC_CONTENTSTACK_REGION` as passed through in code (typed loosely for internal flexibility).
+- Region endpoint resolution uses `getContentstackEndpoint` from `@contentstack/utils`; the app asks for `contentDelivery`, `preview`, and `application` hosts with HTTPS omitted because the SDK host options expect hostnames.
+- If region endpoint resolution fails, `NEXT_PUBLIC_CONTENTSTACK_REGION` is still passed to the SDK so custom/internal regions can work when the corresponding host override environment variables are set.
 
 ### Optional environment overrides (advanced)
 
