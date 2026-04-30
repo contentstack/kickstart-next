@@ -20,8 +20,8 @@
   "dependencies": {
     "@contentstack/delivery-sdk": "^5.2.0",
     "@contentstack/live-preview-utils": "^4.4.0",
-    "@timbenniks/contentstack-endpoints": "^2.1.0",
-    "isomorphic-dompurify": "^3.9.0",
+    "@contentstack/utils": "^1.9.1",
+    "isomorphic-dompurify": "^3.10.0",
     "next": "^16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
