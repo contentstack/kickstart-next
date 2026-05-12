@@ -22,7 +22,7 @@
     "@contentstack/live-preview-utils": "^4.4.0",
     "@timbenniks/contentstack-endpoints": "^2.1.0",
     "isomorphic-dompurify": "^3.9.0",
-    "next": "^16.2.4",
+    "next": "^16.2.6",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },
