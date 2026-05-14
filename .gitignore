@@ -41,3 +41,7 @@ next-env.d.ts
 
 # Tree maker
 tree-maker
+.claude
+.cursor
+.claude/
+.cursor/

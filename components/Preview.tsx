@@ -20,9 +20,16 @@ const LoadingState = () => (
 );
 
 // Preview component that handles live preview functionality for Contentstack
-export default function Preview({ path }: { path: string }) {
-  // State to store the fetched page data
-  const [page, setPage] = useState<PageProps>();
+export default function Preview({
+  path,
+  initialPage,
+}: {
+  path: string;
+  initialPage?: PageProps;
+}) {
+  // Seed state with the server-fetched entry so the SSR'd HTML contains the
+  // real content and back/forward navigation restores a populated page.
+  const [page, setPage] = useState<PageProps | undefined>(initialPage);
 
   // Memoized function to fetch content data based on the current path
   // useCallback prevents unnecessary re-renders when path doesn't change
@@ -34,15 +41,20 @@ export default function Preview({ path }: { path: string }) {
   // Effect hook to initialize live preview and set up content change listener
   useEffect(() => {
     initLivePreview(); // Initialize Contentstack Live Preview functionality
-    // Set up listener for content changes in the Contentstack interface
-    ContentstackLivePreview.onEntryChange(getContent); // Refetch content when changes occur
-  }, [path]); // Re-run effect when path changes
+    // Subscribe to Visual Builder edits. skipInitialRender prevents a redundant
+    // fetch on mount — the initial entry already came from the server.
+    const uid = ContentstackLivePreview.onEntryChange(getContent, {
+      skipInitialRender: true,
+    });
+    return () => {
+      ContentstackLivePreview.unsubscribeOnEntryChange(uid);
+    };
+  }, [path, getContent]);
 
-  // Show loading state while page data is being fetched
+  // Defensive fallback for when the entry isn't available (e.g. no matching URL).
   if (!page) {
     return <LoadingState />;
   }
 
-  // Render the Page component with the fetched page data
-  return <Page page={page as PageProps} />;
+  return <Page page={page} />;
 }
