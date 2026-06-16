@@ -18,7 +18,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@contentstack/delivery-sdk": "^5.2.0",
+    "@contentstack/delivery-sdk": "^5.2.1",
     "@contentstack/live-preview-utils": "^4.4.1",
     "@timbenniks/contentstack-endpoints": "^3.0.2",
     "isomorphic-dompurify": "^3.14.0",
