@@ -73,6 +73,48 @@ NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT=preview
 NEXT_PUBLIC_CONTENTSTACK_PREVIEW=true
 ```
 
+## Regions and endpoint configuration
+
+Set `NEXT_PUBLIC_CONTENTSTACK_REGION` to the region your Contentstack account is on. The value is case-insensitive.
+
+| Region | Value |
+|---|---|
+| AWS North America | `NA` or `US` |
+| AWS Europe | `EU` |
+| AWS Australia | `AU` |
+| Azure North America | `AZURE-NA` |
+| Azure Europe | `AZURE-EU` |
+| GCP North America | `GCP-NA` |
+| GCP Europe | `GCP-EU` |
+
+> Not sure which region you're on? Check your Contentstack dashboard URL — `eu-app.contentstack.com` means EU, `app.contentstack.com` means NA. Free developer accounts are on EU.
+
+All API endpoints (content delivery, live preview, Visual Builder) are automatically resolved from your region. You do not need to set them manually.
+
+The following endpoint keys are resolved per region and available if you ever need them directly via `getContentstackEndpoint` from `@contentstack/utils`:
+
+| Key | NA value |
+|---|---|
+| `contentDelivery` | `cdn.contentstack.io` |
+| `preview` | `rest-preview.contentstack.com` |
+| `application` | `app.contentstack.com` |
+| `graphqlDelivery` | `graphql.contentstack.com` |
+| `graphqlPreview` | `graphql-preview.contentstack.com` |
+| `images` | `images.contentstack.io` |
+| `assets` | `assets.contentstack.io` |
+| `contentManagement` | `api.contentstack.io` |
+| `auth` | `auth-api.contentstack.com` |
+
+### Custom or dedicated environments
+
+If your Contentstack account runs on a dedicated or private cloud instance, the standard region-based endpoints may not apply. In that case, override each endpoint individually using these environment variables. **Only set these if instructed by Contentstack support — standard accounts should leave them unset.**
+
+```bash
+NEXT_PUBLIC_CONTENTSTACK_CONTENT_DELIVERY=your-custom-cdn.example.com
+NEXT_PUBLIC_CONTENTSTACK_PREVIEW_HOST=your-custom-preview.example.com
+NEXT_PUBLIC_CONTENTSTACK_CONTENT_APPLICATION=your-custom-app.example.com
+```
+
 ## Turn on Live Preview
 
 Go to Settings > Live Preview. Click enable and select the `Preview` environment in the drop down. Hit save.
