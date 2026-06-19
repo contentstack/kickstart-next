@@ -1,22 +1,19 @@
 // Importing Contentstack SDK and specific types for region and query operations
 import contentstack, { QueryOperation } from "@contentstack/delivery-sdk";
 
-// Importing Contentstack Live Preview utilities and stack SDK 
+// Importing Contentstack Live Preview utilities and stack SDK
 import ContentstackLivePreview, { IStackSdk } from "@contentstack/live-preview-utils";
 
-// Importing the Page type definition 
+// Importing the Page type definition
 import { Page } from "./types";
 
-// helper functions from private package to retrieve Contentstack endpoints in a convienient way
-import { getContentstackEndpoints, getRegionForString } from "@timbenniks/contentstack-endpoints";
+// helper functions to retrieve Contentstack endpoints for a given region
+import { getContentstackEndpoint, type ContentstackEndpoints } from "@contentstack/utils";
 
 export const isPreview = process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW === "true";
 
-// Set the region by string value from environment variables
-const region = getRegionForString(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION as string)
-
 // object with all endpoints for region.
-const endpoints = getContentstackEndpoints(region, true)
+const endpoints = getContentstackEndpoint(process.env.NEXT_PUBLIC_CONTENTSTACK_REGION || 'NA', '', true) as ContentstackEndpoints
 
 export const stack = contentstack.stack({
   // Setting the API key from environment variables
@@ -29,13 +26,13 @@ export const stack = contentstack.stack({
   environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT as string,
 
   // Setting the region
-  // if the region doesnt exist, fall back to a custom region given by the env vars
-  // for internal testing purposes at Contentstack we look for a custom region in the env vars, you do not have to do this.
-  region: region ? region : process.env.NEXT_PUBLIC_CONTENTSTACK_REGION as any,
+  // for custom or dedicated Contentstack environments, override each endpoint individually using environment variables.
+  // You can omit this if you have set a region above. Use @contentstack/utils getContentstackEndpoint to get the right urls for your region.
+  region: process.env.NEXT_PUBLIC_CONTENTSTACK_REGION as any,
 
   // Setting the host for content delivery based on the region or environment variables
-  // This is done for internal testing purposes at Contentstack, you can omit this if you have set a region above.
-  host: process.env.NEXT_PUBLIC_CONTENTSTACK_CONTENT_DELIVERY || endpoints && endpoints.contentDelivery,
+  // for custom or dedicated Contentstack environments, override each endpoint individually using environment variables.
+  host: process.env.NEXT_PUBLIC_CONTENTSTACK_CONTENT_DELIVERY || endpoints.contentDelivery as string,
 
   live_preview: {
     // Enabling live preview if specified in environment variables
@@ -45,8 +42,8 @@ export const stack = contentstack.stack({
     preview_token: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_TOKEN,
 
     // Setting the host for live preview based on the region
-    // for internal testing purposes at Contentstack we look for a custom host in the env vars, you do not have to do this.
-    host: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_HOST || endpoints && endpoints.preview
+    // for custom or dedicated Contentstack environments, override each endpoint individually using environment variables.
+    host: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_HOST || endpoints.preview as string
   }
 });
 
@@ -63,8 +60,8 @@ export function initLivePreview() {
     },
     clientUrlParams: {
       // Setting the client URL parameters for live preview
-      // for internal testing purposes at Contentstack we look for a custom host in the env vars, you do not have to do this.
-      host: process.env.NEXT_PUBLIC_CONTENTSTACK_CONTENT_APPLICATION || endpoints && endpoints.application
+      // for custom or dedicated Contentstack environments, override each endpoint individually using environment variables.
+      host: process.env.NEXT_PUBLIC_CONTENTSTACK_CONTENT_APPLICATION || endpoints.application as string
     },
     editButton: {
       enable: true, // Enabling the edit button for live preview
