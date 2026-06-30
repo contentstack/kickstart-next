@@ -1,14 +1,14 @@
 {
-  "name": "kickstart-next",
-  "version": "1.1.0",
+  "name": "aurora-hall",
+  "version": "0.1.0",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/contentstack/kickstart-next"
+    "url": "https://github.com/contentstack/aurora-hall"
   },
-  "description": "Contentstack Kickstarts are the minimum amount of code needed to connect to Contentstack.",
+  "description": "aurora-hall",
   "author": "Tim Benniks <tim.benniks@contentstack.com>",
-  "annotation": "Lo Etheridge <lo.etheridge@contentstack.com>",
+  "co-authors": "Lo Etheridge <lo.etheridge@contentstack.com>",
   "homepage": "https://contentstack.com",
   "license": "MIT",
   "scripts": {
@@ -21,7 +21,7 @@
     "@contentstack/delivery-sdk": "^5.2.1",
     "@contentstack/live-preview-utils": "^4.4.4",
     "@contentstack/utils": "^1.9.1",
-    "isomorphic-dompurify": "3.17.0",
+    "isomorphic-dompurify": "3.18.0",
     "next": "^16.2.9",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
@@ -37,7 +37,7 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-    "overrides": {
+  "overrides": {
     "postcss": "8.5.15",
     "qs": "6.15.2"
   }
