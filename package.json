@@ -1,6 +1,6 @@
 {
   "name": "kickstart-next",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": false,
   "repository": {
     "type": "git",
@@ -22,9 +22,9 @@
     "@contentstack/live-preview-utils": "^4.5.0",
     "@contentstack/utils": "^1.9.1",
     "isomorphic-dompurify": "3.23.0",
-    "next": "^16.2.12",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "next": "^16.3.4",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -39,8 +39,10 @@
   },
   "overrides": {
     "postcss": "8.5.25",
-    "qs": "6.15.3",
-    "sharp": "0.35.0",
-    "nanoid": "3.3.18"
+    "qs": "6.16.0",
+    "sharp": "0.35.4",
+    "nanoid": "3.3.18",
+    "undici": "8.10.2",
+    "js-yaml": "4.3.2"
   }
 }
