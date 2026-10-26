@@ -5,4 +5,5 @@ fileignoreconfig:
   - filename: package-lock.json
     ignore_detectors:
       - filecontent
+      - base64content
 version: "1.0"
